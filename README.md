@@ -1,112 +1,138 @@
 # 🚀 HireMind AI
 
-> AI-powered mock interview platform that simulates real interview environments using dynamic question generation, secure authentication, and scalable backend architecture.
+> **AI-powered mock interview platform** that simulates real-world technical interviews using dynamic question generation, secure authentication, and scalable full-stack architecture.
 
 ---
 
-## 🧠 Overview
+## 🌐 Live Demo
 
-HireMind AI is a full-stack application designed to help users prepare for interviews through **AI-generated questions**, **session-based tracking**, and a **secure, modular backend system**.
-
-The system is built with a clear separation of frontend and backend, following a **scalable REST API architecture**.
-
----
-
-## ✨ Features
-
-### 🎯 Core Features
-
-* 🤖 **AI-driven Question Generation**
-
-  * Generates interview questions dynamically based on role/domain
-
-* 🔐 **JWT Authentication**
-
-  * Secure login/signup system
-  * Protected routes using middleware
-
-* 🧾 **Session Management**
-
-  * Tracks user interview sessions
-  * Maintains structured interview flow
-
-* 💳 **Razorpay Integration**
-
-  * Payment gateway for premium features
+🔗 **Frontend:** https://hire-mind-ai-ten.vercel.app
+🔗 **Backend API:** https://hiremind-ai-3wl2.onrender.com
 
 ---
 
-### ⚙️ Backend Capabilities
+## 🧠 What is HireMind AI?
 
-* RESTful API design using **Node.js + Express**
-* Layered architecture:
+HireMind AI is a **full-stack intelligent interview simulator** designed to replicate real interview environments.
 
-  * Controllers
-  * Services
-  * Routes
-  * Middleware
-* Centralized configuration and modular structure
-* Scalable request handling
+It enables users to:
+
+* Practice interviews with **AI-generated questions**
+* Experience **structured interview sessions**
+* Track progress through **session-based workflows**
+* Access premium features via **secure payment integration**
+
+Unlike static practice platforms, HireMind AI introduces **dynamic, context-aware questioning**, making preparation closer to real-world scenarios.
 
 ---
+
+## ✨ Key Features
+
+### 🤖 AI-Powered Interview Engine
+
+* Dynamic question generation based on role/domain
+* Adaptive flow to simulate real interview progression
+* Integrates AI APIs for intelligent responses
+
+---
+
+### 🔐 Secure Authentication System
+
+* JWT-based authentication
+* Protected API routes
+* Middleware-driven authorization flow
+
+---
+
+### 🧾 Session-Based Interview Tracking
+
+* Persistent interview sessions
+* Structured flow management
+* Scalable session handling via backend services
+
+---
+
+### 💳 Payment Integration (Razorpay)
+
+* Secure payment handling for premium features
+* API-based transaction flow
+* Ready for subscription-based expansion
+
+---
+
+### ⚡ Modern Frontend Experience
+
+* Built with **React + Vite**
+* Fast, responsive UI
+* Component-based scalable design
+
+---
+
+## 🏗️ Architecture Overview
+
+```text
+Frontend (Vercel - CDN)
+        ↓
+Backend (Render - Node/Express API)
+        ↓
+Database (MongoDB)
+        ↓
+External Services (AI APIs, Razorpay)
+```
+
+---
+
+## 🧰 Tech Stack
 
 ### 🎨 Frontend
 
-* Built using **React + Vite**
-* Component-based architecture
-* Smooth and responsive UI for interview experience
-
----
-
-## 🏗️ Tech Stack
-
-### Frontend
-
 * React (Vite)
-* HTML, CSS, JavaScript
+* JavaScript (ES6+)
+* CSS
 
-### Backend
+### ⚙️ Backend
 
 * Node.js
 * Express.js
 
-### Database
+### 🗄️ Database
 
 * MongoDB
 
-### Authentication
+### 🔐 Authentication
 
-* JWT (JSON Web Tokens)
+* JSON Web Tokens (JWT)
 
-### Payments
+### 💳 Payments
 
 * Razorpay API
 
-### Architecture
+### ☁️ Deployment
 
-* REST APIs
-* Modular service-based backend design
+* Frontend: Vercel
+* Backend: Render
 
 ---
 
 ## 📁 Project Structure
 
 ```
-HireMind.AI/
+HireMind-AI/
 │
 ├── backend/
 │   ├── src/
-│   │   ├── controllers/
-│   │   ├── services/
-│   │   ├── routes/
-│   │   ├── models/
-│   │   ├── middlewares/
-│   │   └── config/
-│   ├── server.js
+│   │   ├── config/        # Configuration files
+│   │   ├── controllers/   # Route logic
+│   │   ├── services/      # Business logic layer
+│   │   ├── routes/        # API routes
+│   │   ├── models/        # Database schemas
+│   │   ├── middlewares/   # Auth & error handling
+│   │   └── app.js         # Express app setup
+│   ├── server.js          # Entry point
 │   └── package.json
 │
 ├── frontend/
-│   ├── src/
+│   ├── src/               # React components
 │   ├── index.html
 │   ├── vite.config.js
 │   └── package.json
@@ -116,7 +142,7 @@ HireMind.AI/
 
 ---
 
-## ⚙️ Installation & Setup
+## ⚙️ Local Setup Guide
 
 ### 1️⃣ Clone the Repository
 
@@ -139,22 +165,30 @@ npm install
 #### Frontend
 
 ```bash
-cd ../frontend
+cd frontend
 npm install
 ```
 
 ---
 
-### 3️⃣ Configure Environment Variables
+### 3️⃣ Environment Configuration
 
 Create `.env` in `/backend`:
 
-```
+```env
 PORT=5000
-MONGO_URI=your_mongodb_connection_string
-JWT_SECRET=your_secret_key
-RAZORPAY_KEY=your_key
-AI_API_KEY=your_ai_key
+MONGO_URI=your_mongodb_uri
+JWT_SECRET=your_jwt_secret
+GOOGLE_GENAI_API_KEY=your_ai_key
+RAZORPAY_KEY_ID=your_key
+RAZORPAY_KEY_SECRET=your_secret
+CLIENT_URL=http://localhost:5173
+```
+
+Create `.env` in `/frontend`:
+
+```env
+VITE_API_URL=http://localhost:5000
 ```
 
 ---
@@ -180,41 +214,62 @@ npm run dev
 ## 🔐 Authentication Flow
 
 1. User signs up / logs in
-2. JWT token is generated
-3. Token is sent to client
-4. Protected routes verify token via middleware
+2. JWT token is generated on backend
+3. Token is stored on client
+4. Protected routes validate token via middleware
 
 ---
 
 ## 🔄 Application Workflow
 
-1. User selects interview domain
-2. AI generates relevant questions
-3. Session is created and stored
+1. User selects role/domain
+2. AI generates relevant interview questions
+3. Session is initialized and stored
 4. User interacts with interview flow
-5. Responses are tracked for further processing
+5. Backend tracks responses and progress
+
+---
+
+## 🚀 Deployment Strategy
+
+### Frontend (Vercel)
+
+* Static hosting with global CDN
+* Environment variable:
+
+  ```
+  VITE_API_URL=https://hiremind-ai-3wl2.onrender.com
+  ```
+
+### Backend (Render)
+
+* Node.js web service
+* Environment variables configured securely
+* Handles API + business logic
 
 ---
 
 ## 📈 Design Highlights
 
-* Clean separation of concerns (MVC + Services)
-* Stateless authentication using JWT
-* Modular backend → easy to scale and maintain
-* Frontend-backend decoupling
+* Clean **layered architecture (Controller → Service → Route)**
+* Stateless authentication (JWT)
+* Fully decoupled frontend & backend
+* Production-ready deployment setup
+* Scalable codebase for future expansion
 
 ---
 
-## 🧪 Future Improvements
+## 🧪 Future Enhancements
 
-* AI-based answer evaluation system
-* Voice-based interview simulation
-* Analytics dashboard for performance tracking
-* Deployment using AWS (EC2 / Serverless)
+* 🎤 Voice-based interview simulation
+* 🧠 AI-based answer evaluation & scoring
+* 📊 Performance analytics dashboard
+* 📱 Mobile responsiveness improvements
+* ☁️ AWS deployment (EC2 / Lambda / S3)
 
 ---
 
-## 👤 Author
+## 👨‍💻 Author
 
 **Aryan Dev Tyagi**
 📧 [aryandevtyagi10@gmail.com](mailto:aryandevtyagi10@gmail.com)
@@ -222,6 +277,14 @@ npm run dev
 
 ---
 
-## ⭐ Star This Repo
+## ⭐ Support
 
-If you found this useful, consider giving it a ⭐
+If you found this project useful:
+
+* ⭐ Star the repository
+* 🍴 Fork and contribute
+* 🧠 Share feedback
+
+---
+
+> *“Practice like it's real. Perform like it's nothing.”*
