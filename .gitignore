@@ -1,3 +1,16 @@
 # Environment variables
 .env
-.env.*
+.env.local
+.env.*.local
+
+# Allow .env.example files
+!.env.example
+
+# Dependencies
+node_modules/
+
+# Build outputs
+dist/
+
+# OS files
+.DS_Store

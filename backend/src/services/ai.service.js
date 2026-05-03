@@ -238,6 +238,15 @@ Return JSON results.
   return safeParse(response.text);
 }
 
+async function evaluateAnswer({ question, answer, role, mode }) {
+  const { results } = await evaluateAllAnswers({
+    qaList: [{ question, answer }],
+    role,
+    mode,
+  });
+  return results[0];
+}
+
 // ─────────────────────────────────────────
 // 📊 6. SESSION REPORT PDF
 // ─────────────────────────────────────────
@@ -276,6 +285,7 @@ module.exports = {
   generateInterviewReport,
   generateResumePdf,
   generateInterviewQuestions,
-  evaluateAllAnswers, // ✅ NEW (IMPORTANT)
+  evaluateAllAnswers,
+  evaluateAnswer,
   generateSessionReportPdf,
 };
